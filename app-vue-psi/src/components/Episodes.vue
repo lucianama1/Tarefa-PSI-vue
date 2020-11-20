@@ -75,6 +75,7 @@ export default {
     border-radius: 5px;
   }
   .get-button{
+    cursor:pointer;
     font-weight: bold;
     font-size: medium;
     border-radius: 7px;

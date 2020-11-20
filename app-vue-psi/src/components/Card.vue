@@ -11,10 +11,10 @@
         <h3>{{info.name}}</h3>
         <p>({{info.nickname}})</p>
         <p>Profissão: {{info.occupation[0]}}</p>
-        <p v-show="isHidden">Status : {{info.status}}</p>
+        <p id="spoiler" v-on:click="toggleIsHidden" v-show="!isHidden">Status: SPOILER</p>
+        <p id="spoiler" v-on:click="toggleIsHidden" v-show="isHidden"> {{info.status}}</p>
       </div>   
     </div>
-      <p id="spoiler" v-on:click="toggleIsHidden" >SPOILER: Vivo ou morto?</p>
 
   </div>
 </template>
@@ -93,6 +93,7 @@ export default {
     object-fit: cover;
   }
   .get-button{
+    cursor:pointer;
     font-weight: bold;
     font-size: medium;
     border-radius: 7px;
@@ -103,9 +104,7 @@ export default {
     border:none;
   }
   #spoiler{
-    color: #fff;
-    text-decoration: underline;
-    cursor:default;
+    cursor:pointer;
   }
 
 </style>

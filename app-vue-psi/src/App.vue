@@ -64,7 +64,7 @@ export default {
     text-emphasis: none;
   }
   li a{
-    cursor:default;
+    cursor:pointer;
     padding:12px 20px;
     border-radius: 15px 15px 0px 0px;
   }
@@ -89,6 +89,7 @@ export default {
     text-align: center;
   }
   body {
+    cursor:default;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     background-color: rgb(163, 122, 34);
