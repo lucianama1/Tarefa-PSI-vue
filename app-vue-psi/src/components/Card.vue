@@ -1,9 +1,12 @@
 <template>
   <div class="card">
 
-    <button v-on:click="randomChar">Personagem</button>
-    <div class="panel" v-for='info in infos' v-bind:key='info.id' v-bind:info="info">
-      <p v-on:click="toggleIsHidden">{{info.name}}</p>
+    <button class="get-button" v-on:click="randomChar">Personagem</button>
+
+    <div class="panel" v-for='info in infos' v-bind:key='info.id' v-bind:info="info"><br>
+      <h4 id="charName" v-on:click="toggleIsHidden">{{info.name}}</h4>
+      <h5>({{info.nickname}})</h5>
+      <p>Trabalho: {{info.occupation}}</p>   
       <p v-show="isHidden">{{info.status}}</p>
       <img :src="info.img">
     </div>
@@ -24,9 +27,17 @@ export default {
       isHidden: false
     }
   },
-
+  created(){         //carrega assim que o app for aberto
+    axios.get('https://www.breakingbadapi.com/api/characters/1')
+    .then(response => {
+    this.infos = (response.data)      
+    })
+    .catch(e => {
+    this.errors.push(e)
+    })
+  },
   methods:{
-    randomChar(){          //carrega assim que o app for aberto
+    randomChar(){
         axios.get('https://www.breakingbadapi.com/api/character/random')
         .then(response => {
           this.infos = (response.data)      
@@ -53,16 +64,21 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .panel{
-    height:15em;
+    margin-top: 1em;
+    height:20rem;
     width:100%;
     background-color: #ffffff;
     border-radius: 15px;
   }
   img{
-    height:50%;
-    width:auto;
+    border-radius: 0px 0px 15px 15px;
+    height:100%;
+    width: 100%;
+    object-fit: cover;
   }
-  button{
+  .get-button{
+    font-weight: bold;
+    font-size: medium;
     border-radius: 7px;
     height:3em;
     width: 100%;
@@ -70,6 +86,5 @@ export default {
     color:#ffffff;
     border:none;
   }
-
 
 </style>
