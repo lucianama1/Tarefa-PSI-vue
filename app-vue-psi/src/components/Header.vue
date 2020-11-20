@@ -14,10 +14,9 @@ export default {
 
 <style scoped>
   .header{
-    font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
     color: white;
-    height:10em;
+    height:20vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.1)),url(../assets/breakingbad.jpg);
     background-size: cover;
     background-repeat: no-repeat;

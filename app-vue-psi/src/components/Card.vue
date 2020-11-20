@@ -14,7 +14,7 @@
         <p v-show="isHidden">Status : {{info.status}}</p>
       </div>   
     </div>
-      <button class="get-button" v-on:click="toggleIsHidden" >SPOILER: Vivo ou morto?</button>
+      <p id="spoiler" v-on:click="toggleIsHidden" >SPOILER: Vivo ou morto?</p>
 
   </div>
 </template>
@@ -73,7 +73,7 @@ export default {
     flex-direction: row;
     margin-top: 1em;
     margin-bottom: 1em;
-    height:20em;
+    height:45vh;
     width:100%;
     background-color: #ffffff;
   }
@@ -101,6 +101,11 @@ export default {
     background-color:rgb(24, 69, 99);
     color:#ffffff;
     border:none;
+  }
+  #spoiler{
+    color: #fff;
+    text-decoration: underline;
+    cursor:default;
   }
 
 </style>

@@ -48,12 +48,12 @@ export default {
 </script>
 
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); /*fonte*/
   #tabs{
     margin: 0;
     padding: 0px 0px 25px;
     background-color: #3b3b3b;
-    height:1em;
+    height:1vh;
   }
   li{
     font-weight: bold;
@@ -65,7 +65,7 @@ export default {
   }
   li a{
     cursor:default;
-    padding:10px;
+    padding:12px 20px;
     border-radius: 15px 15px 0px 0px;
   }
   #charTab{
@@ -79,18 +79,17 @@ export default {
     bottom:0;
     color:black;
     margin:0;
-    height: 32em;
+    height: 79vh;
     padding:2em;
   }
   #app {
     height:100%;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
   }
   body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     background-color: rgb(163, 122, 34);
   }

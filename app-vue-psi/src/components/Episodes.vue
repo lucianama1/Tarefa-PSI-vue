@@ -6,6 +6,7 @@
     <div class="panel" v-for='info in infos' v-bind:key='info.id' v-bind:info="info"><br>
       <h4>{{info.title}}</h4>
       <h5>Temporada: {{info.season}} - Episódio: {{info.episode}}</h5>
+      <h5>Lançamento: {{info.air_date}}</h5>
     </div>
 
     <button class="get-button" v-on:click="lastEp">Anterior</button>
@@ -34,7 +35,7 @@ export default {
     this.errors.push(e)
     })
   },
-  methods:{
+  methods:{ //para passar pelos episódios em ordem
     nextEp(){
         this.episode++
         axios.get('https://www.breakingbadapi.com/api/episodes/'+ this.episode)
@@ -66,11 +67,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .panel{
+    height: 24vh;
     margin-top: 1em;
     margin-bottom: 1em;
     width:100%;
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: 5px;
   }
   .get-button{
     font-weight: bold;
