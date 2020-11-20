@@ -1,24 +1,21 @@
 # app-vue-psi
 
-## Project setup
+Aplicação que lista personagens aleatórios da série de tv Breaking Bad.
+
+> Projeto desenvolvido em VueJS com integração da API [The Breaking Bad API](https://breakingbadapi.com/documentation)
+
+## Para instalar
+
++ Clone o repositório e de cd para a pasta "app-vue-psi"
+
 ```
-npm install
+$ npm install
 ```
 
-### Compiles and hot-reloads for development
+### Para usar
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+$ npm run serve
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> Último update 20 nov. 2020
