@@ -2,8 +2,8 @@
   <div id="app">
     <Header/>
     <ul id="tabs">
-      <li><a v-on:click="goToChar">Personagens</a></li>
-      <li><a v-on:click="goToEp">Episódios</a></li>
+      <li><a id="charTab" v-on:click="goToChar">Personagens</a></li>
+      <li><a id="epTab" v-on:click="goToEp">Episódios</a></li>
     </ul>
     <div class="content">
       <Card v-if="isChar"/>
@@ -50,31 +50,40 @@ export default {
 <style>
 
   #tabs{
-    border-radius: 15px 15px 0px 0px;
     margin: 0;
     padding: 0px 0px 25px;
-    background-color: #f1f1f1;
+    background-color: #3b3b3b;
+    height:1em;
   }
   li{
+    font-weight: bold;
     font-size: medium;
-    overflow: hidden;
-    color: #000;
+    color: #fff;
     float:left;
     display: block;
     text-emphasis: none;
-    padding: 8px;
-    background-color: #f1f1f1;
+  }
+  li a{
+    cursor:default;
+    padding:10px;
     border-radius: 15px 15px 0px 0px;
   }
+  #charTab{
+    background-color:rgb(24, 69, 99);
+  }
+  #epTab{
+    background-color:rgb(24, 97, 75);
+  }
   .content{
-    background-color: #f1f1f1;
+    background-color: #3b3b3b;
     bottom:0;
     color:black;
-    height:100%;
     margin:0;
+    height: 32em;
     padding:2em;
   }
   #app {
+    height:100%;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

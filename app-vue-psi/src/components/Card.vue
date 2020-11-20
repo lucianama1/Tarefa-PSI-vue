@@ -1,15 +1,21 @@
 <template>
   <div class="card">
 
-    <button class="get-button" v-on:click="randomChar">Personagem</button>
+    <button class="get-button" v-on:click="randomChar">Novo personagem</button>
 
-    <div class="panel" v-for='info in infos' v-bind:key='info.id' v-bind:info="info"><br>
-      <h4 v-on:click="toggleIsHidden">{{info.name}}</h4>
-      <h5>({{info.nickname}})</h5>
-      <p>{{info.occupation}}</p>   
-      <p v-show="isHidden">{{info.status}}</p>
-      <img :src="info.img">
+    <div class="panel">
+      <div class="panel-left" v-for='info in infos' v-bind:key='info.id' v-bind:info="info">
+        <img :src="info.img">
+      </div>
+      <div class="panel-right" v-for='info in infos' v-bind:key='info.id' v-bind:info="info">
+        <h3>{{info.name}}</h3>
+        <p>({{info.nickname}})</p>
+        <p>Profissão: {{info.occupation[0]}}</p>
+        <p v-show="isHidden">Status : {{info.status}}</p>
+      </div>   
     </div>
+      <button class="get-button" v-on:click="toggleIsHidden" >SPOILER: Vivo ou morto?</button>
+
   </div>
 </template>
 
@@ -44,7 +50,7 @@ export default {
           this.errors.push(e)
         })
     },
-    toggleIsHidden(){
+    toggleIsHidden(){ //para o spoiler
       if(this.isHidden == true){
         this.isHidden = false;
       }
@@ -62,16 +68,28 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .panel{
+    border-radius: 5px;
+    display:flex;
+    flex-direction: row;
     margin-top: 1em;
-    height:20rem;
+    margin-bottom: 1em;
+    height:20em;
     width:100%;
     background-color: #ffffff;
-    border-radius: 15px;
+  }
+  .panel-left{
+    width:50%;
+  }
+  .panel-right{
+    width:50%;
+    text-align: center;
+    padding: 5%;
   }
   img{
-    border-radius: 0px 0px 15px 15px;
+    border-radius: 4px 0px 0px 4px;
+    overflow: hidden;
     height:100%;
-    width: 100%;
+    width:100%;
     object-fit: cover;
   }
   .get-button{
@@ -80,7 +98,7 @@ export default {
     border-radius: 7px;
     height:3em;
     width: 100%;
-    background-color:rgb(180, 77, 7);
+    background-color:rgb(24, 69, 99);
     color:#ffffff;
     border:none;
   }
