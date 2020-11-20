@@ -1,15 +1,15 @@
 <template>
-  <div class="card">
+  <div class="episodes">
 
-    <button class="get-button" v-on:click="randomChar">Personagem</button>
+    <button class="get-button" v-on:click="nextEp">Seguinte</button>
 
     <div class="panel" v-for='info in infos' v-bind:key='info.id' v-bind:info="info"><br>
-      <h4 v-on:click="toggleIsHidden">{{info.name}}</h4>
-      <h5>({{info.nickname}})</h5>
-      <p>{{info.occupation}}</p>   
-      <p v-show="isHidden">{{info.status}}</p>
-      <img :src="info.img">
+      <h4>{{info.title}}</h4>
+      <h5>Temporada: {{info.season}} - Episódio: {{info.episode}}</h5>
     </div>
+
+    <button class="get-button" v-on:click="lastEp">Anterior</button>
+
   </div>
 </template>
 
@@ -17,16 +17,16 @@
 import axios from 'axios'
 
 export default {
-  name: 'Card',
+  name: 'Episodes',
 
   data() {
     return {
       infos: [],
-      isHidden: false
+      episode: 1
     }
   },
   created(){         //carrega assim que o app for aberto
-    axios.get('https://www.breakingbadapi.com/api/characters/1')
+    axios.get('https://www.breakingbadapi.com/api/episodes/1')
     .then(response => {
     this.infos = (response.data)      
     })
@@ -35,8 +35,9 @@ export default {
     })
   },
   methods:{
-    randomChar(){
-        axios.get('https://www.breakingbadapi.com/api/character/random')
+    nextEp(){
+        this.episode++
+        axios.get('https://www.breakingbadapi.com/api/episodes/'+ this.episode)
         .then(response => {
           this.infos = (response.data)      
         })
@@ -44,15 +45,18 @@ export default {
           this.errors.push(e)
         })
     },
-    toggleIsHidden(){
-      if(this.isHidden == true){
-        this.isHidden = false;
-      }
-      else{
-        this.isHidden = true;
-      }
+    lastEp(){
+        if(this.episode != 1){
+            this.episode--
+        }        
+        axios.get('https://www.breakingbadapi.com/api/episodes/'+ this.episode)
+        .then(response => {
+          this.infos = (response.data)      
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
     }
-
   }
 
 }
@@ -63,16 +67,10 @@ export default {
 <style scoped>
   .panel{
     margin-top: 1em;
-    height:20rem;
+    margin-bottom: 1em;
     width:100%;
     background-color: #ffffff;
     border-radius: 15px;
-  }
-  img{
-    border-radius: 0px 0px 15px 15px;
-    height:100%;
-    width: 100%;
-    object-fit: cover;
   }
   .get-button{
     font-weight: bold;
@@ -80,7 +78,7 @@ export default {
     border-radius: 7px;
     height:3em;
     width: 100%;
-    background-color:rgb(180, 77, 7);
+    background-color:rgb(24, 97, 75);
     color:#ffffff;
     border:none;
   }
