@@ -9,6 +9,7 @@
       </div>
       <div class="panel-right" v-for='info in infos' v-bind:key='info.id' v-bind:info="info">
         <h3>{{info.name}}</h3>
+        <hr>
         <p>({{info.nickname}})</p>
         <p>Profissão: {{info.occupation[0]}}</p>
         <p id="spoiler" v-on:click="toggleIsHidden" v-show="!isHidden">Status: SPOILER</p>
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import Api from '../services/Api'
 
 export default {
   name: 'Card',
@@ -32,7 +33,7 @@ export default {
     }
   },
   created(){         //carrega assim que o app for aberto
-    axios.get('https://www.breakingbadapi.com/api/characters/1')
+    Api.get('/characters/1')  //traz o personagem com id 1
     .then(response => {
     this.infos = (response.data)      
     })
@@ -42,15 +43,15 @@ export default {
   },
   methods:{
     randomChar(){
-        axios.get('https://www.breakingbadapi.com/api/character/random')
-        .then(response => {
-          this.infos = (response.data)      
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+      Api.get('/character/random')  //traz um personagem aleatório
+      .then(response => {
+        this.infos = (response.data)      
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     },
-    toggleIsHidden(){ //para o spoiler
+    toggleIsHidden(){ //ativa e desativa o spoiler
       if(this.isHidden == true){
         this.isHidden = false;
       }
@@ -86,22 +87,14 @@ export default {
     padding: 5%;
   }
   img{
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 5px 0px 0px 5px;
     overflow: hidden;
     height:100%;
     width:100%;
     object-fit: cover;
   }
   .get-button{
-    cursor:pointer;
-    font-weight: bold;
-    font-size: medium;
-    border-radius: 7px;
-    height:3em;
-    width: 100%;
     background-color:rgb(24, 69, 99);
-    color:#ffffff;
-    border:none;
   }
   #spoiler{
     cursor:pointer;

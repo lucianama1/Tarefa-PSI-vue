@@ -52,7 +52,7 @@ export default {
   #tabs{
     margin: 0;
     padding: 0px 0px 25px;
-    background-color: #3b3b3b;
+    background-color: #292929;
     height:1vh;
   }
   li{
@@ -82,6 +82,16 @@ export default {
     height: 79vh;
     padding:2em;
   }
+  .get-button{
+    cursor:pointer;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 7px;
+    height:3em;
+    width: 100%;
+    color:#ffffff;
+    border:none;
+  }
   #app {
     height:100%;
     -webkit-font-smoothing: antialiased;
@@ -92,6 +102,6 @@ export default {
     cursor:default;
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: rgb(163, 122, 34);
+    background-color: #3b3b3b;
   }
 </style>
