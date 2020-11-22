@@ -16,9 +16,13 @@ $ npm install
 ```
 $ npm run serve
 ```
+Você poderá ver o aplicativo no endereço:
+```
+http://localhost:8080/
+```
 
-### Como usar
+### Para usar
 
-O aplicativo possui duas abas chamadas "Personagens" e "Episódios". A aba inicial é a Personagens, e para usá-la basta apertar o botão "Novo Personagem" para ver as informações de um personagem aleatório. Se quiser saber se o personagem está morto, clicar em "Status: SPOILER". Na segunda aba, basta clicar em "Seguinte" e "Anterior" para trocar entre os episódios.
+O aplicativo possui duas abas chamadas "Personagens" e "Episódios". A aba inicial é a Personagens, e para usá-la basta apertar o botão "Novo Personagem" para ver as informações de um personagem aleatório. A opção "Status: SPOILER" mostra se o personagem está morto. Clicar nessa informação voltará a escondê-la. Na segunda aba, basta clicar em "Seguinte" e "Anterior" para trocar entre os episódios.
 
 > Última atualização 20 nov. 2020
